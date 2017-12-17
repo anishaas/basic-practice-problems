@@ -12,7 +12,7 @@ public class CustomerLinkedListTest {
 		int choice;
 		do {
 			System.out.println("Options: 1 = insert at beginning, 2 = insert at position, 3 = insert last, "
-					+ "4 = delete at beginning 5 = delete at position 6 = delete at last 7 = display 8 = exit");
+					+ "4 = delete at beginning 5 = delete at position 6 = delete at last 7 = reverse list 8 = display 9 = exit");
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -58,15 +58,18 @@ public class CustomerLinkedListTest {
 			case 6:
 				customers.deleteAtLast();
 				break;
-			case 7:
-				System.out.println("The list of employees: ");
-				customers.display();
+			case 7: 
+				customers.reverse();
 				break;
 			case 8:
+				System.out.println("The list of customers: ");
+				customers.display();
+				break;
+			case 9:
 				exit();
 				break;
 			}
-		} while (choice != 8);
+		} while (choice != 9);
 	}
 
 	private static void exit() {

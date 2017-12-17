@@ -40,6 +40,37 @@ public class CustomerLinkedList {
 		
 	}
 	
+	public void reverse() {
+		if(head == null || head.getNext()==null) {
+			return;
+		} 
+		
+		Node temp = head.getNext();
+		if(temp.getNext()==null){
+			temp.setNext(head);
+			head.setNext(null);
+			return;
+		}
+		Node firstNode = head;
+		Node prev = head;
+		Node current = prev.getNext();
+		Node next = current.getNext();
+		while (current!= null) {
+			System.out.println("loop entered");
+			current.setNext(prev);
+			prev = current;
+			current = next;
+			if(current!=null){
+			next = current.getNext();
+			}
+		}
+		
+		head = prev;
+		firstNode.setNext(null);
+		
+		System.out.println("loop exited");
+	}
+	
 	public void deleteAtBeginning() {
 		if(head == null) {
 			System.out.println("List is empty");
