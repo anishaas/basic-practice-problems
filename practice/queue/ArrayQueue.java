@@ -1,6 +1,6 @@
 package practice.queue;
 
-public class ArrayQueue {
+public class ArrayQueue implements Queue{
 	
 	private static int[] queue = new int[1000];
 	private static int front = -1;
@@ -36,11 +36,10 @@ public class ArrayQueue {
  		front++;
 	}
 
-	public int display() {
+	public void display() {
 		for (int i = front; i <= rear; i++) {
 			System.out.print(queue[i] + " ");
 		}
-		return 0;
 	}
 
 }

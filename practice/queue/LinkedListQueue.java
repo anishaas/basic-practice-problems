@@ -1,6 +1,6 @@
 package practice.queue;
 
-public class LinkedListQueue {
+public class LinkedListQueue implements Queue{
 	
 	class Node {
 		
