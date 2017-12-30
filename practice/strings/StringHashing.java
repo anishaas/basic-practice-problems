@@ -1,16 +1,15 @@
-package practice.sets;
+package practice.strings;
 
-import java.util.Scanner;
-
-public class HashTable {
+public class StringHashing {
 	
 	class Node {
-		int data;
+		String data;
 		Node next;
-		public int getData() {
+		
+		public String getData() {
 			return data;
 		}
-		public void setData(int data) {
+		public void setData(String data) {
 			this.data = data;
 		}
 		public Node getNext() {
@@ -23,6 +22,19 @@ public class HashTable {
 	}
 	
 	Node [] arr = new Node[100];
+	private static int TABLE_SIZE = 100;
+	
+	private static int hash(String val) {
+		int sum = 0;
+		int multiplier = 1;
+		int index = -1;
+		for(int i = 0; i < val.length(); i++) {
+			sum = sum + (multiplier * val.charAt(i));
+			multiplier++;
+		}
+		index = sum % TABLE_SIZE;
+		return index;
+	}
 	
 	public void display() {
 		for(int i = 0; i < arr.length; i++) {
@@ -38,21 +50,24 @@ public class HashTable {
 		}
 	}
 	
-	public void insert(int val) {
-		int index = val % 100;
+	public void insert(String val) {
+		int index = hash(val);
 		Node node = new Node();
 		node.setData(val);
 		Node temp = arr[index]; 
 		//check for existing value
 		if(arr[index] != null) {
+			if(arr[index].getData().equals(val)){
+				return;
+			}
 			node.setNext(temp);
 			arr[index] = node;			
 		}
 		arr[index] = node;
 	}
 	
-	public void delete(int val) {
-		int index = val % 100;
+	public void delete(String val) {
+		int index = hash(val);
 		//key itself not found.
 		if(arr[index]==null){
 			System.out.println("Element not found");
@@ -61,7 +76,7 @@ public class HashTable {
 		Node temp = arr[index];
 		// only one element in that index(no chaining there)
 		if(temp.getNext() == null) {
-			if(temp.getData()==val)
+			if(temp.getData().equals(val))
 			{
 				arr[index] = null;
 				System.out.println("Element deleted succesfully");
@@ -75,7 +90,7 @@ public class HashTable {
 		// we are now here in the chaining case-- linked list now
 		
 		// delete at beginning
-		if(temp.getData()==val)
+		if(temp.getData().equals(val))
 		{
 			arr[index] = temp.getNext();
 			System.out.println("Element deleted succesfully");
@@ -88,7 +103,7 @@ public class HashTable {
 		// more than one elemnent exists in the chain and data is not in the first node.
 		while(current != null) {
 			
-			if(current.getData()==val){
+			if(current.getData().equals(val)){
 				prev.setNext(current.getNext());
 				found = true;
 				break;
@@ -105,8 +120,8 @@ public class HashTable {
 		System.out.println("Element deleted succesfully");		
 	}
 	
-	public boolean search(int val) {
-		int index = val % 100;
+	public boolean search(String val) {
+		int index = hash(val);
 		//case null at index
 		if(arr[index] == null) {
 			return false;
@@ -115,12 +130,11 @@ public class HashTable {
 		//case linked list at index, must traverse list
 		Node temp = arr[index];
 		while(temp != null) {
-			if(temp.getData() == val) {
+			if(temp.getData().equals(val)) {
 				return true;
 			} 
 			temp = temp.getNext();
 		}
 		return false;
 	}
-
 }
