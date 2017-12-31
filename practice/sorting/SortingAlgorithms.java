@@ -1,7 +1,9 @@
 package practice.sorting;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class SortingAlgorithms {
 
@@ -11,6 +13,33 @@ public class SortingAlgorithms {
 		insertionSort(unsorted);
 		selectionSort(unsorted);
 		bubbleSort(unsorted);
+		
+		List<String> myList = new ArrayList<String>();
+		myList.add("jacob");
+		myList.add("bob");
+		myList.add("Anisha");
+		
+		System.out.println();
+		
+		System.out.println("Before sorting: ");
+		for(String s : myList){
+			System.out.println(s);
+		}
+
+		Collections.sort(myList);
+		
+		System.out.println("After sorting: ");
+		for(String s : myList){
+			System.out.println(s);
+		}
+		
+		System.out.println();
+	
+		System.out.println("Based on ArraySorting: ");
+		
+		String [] myArray = myList.toArray(new String[0]);
+		Arrays.sort(myArray);
+		System.out.println("Sorted array: " + Arrays.toString(myArray));
 	}
 	
 	private static void insertionSort(int[] arr) {

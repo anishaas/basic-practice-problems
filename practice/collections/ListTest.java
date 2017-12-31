@@ -6,7 +6,7 @@ import java.util.List;
 public class ListTest {
 
 	public static void main(String[] args) {
-		List<Customer> custList = new ArrayList<Customer>();
+		List<Customer> custList = new ArrayList<Customer>(100);
 		Customer c1 = new Customer(1, "Ashok", 123);
 		Customer c2 = new Customer(2, "Anisha", 345);
 		Customer c3 = new Customer(3, "Anu", 576);
