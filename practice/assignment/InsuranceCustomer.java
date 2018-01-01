@@ -2,7 +2,9 @@ package practice.assignment;
 
 import java.util.List;
 
-public class InsuranceCustomer {
+import practice.sorting.Customer;
+
+public class InsuranceCustomer implements Comparable<InsuranceCustomer> {
 
 	private Integer insuredId;
 	private String insuredName;
@@ -55,5 +57,13 @@ public class InsuranceCustomer {
 	}
 	public void setPolicies(List<InsurancePolicy> policies) {
 		this.policies = policies;
+	}
+	
+	@Override
+	public int compareTo(InsuranceCustomer o) {
+		if(o==null){
+			return 0;
+		}		
+		return this.getInsuredId().compareTo(o.getInsuredId());
 	}
 }
