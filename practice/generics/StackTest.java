@@ -26,6 +26,14 @@ public class StackTest {
 		
 		arr.pop();
 		arr.display();
+		
+		for(Integer i : arr){
+			
+		}
+		
+		for(Integer i:list){
+			System.out.println(i);
+		}
 	}
 	
 }

@@ -24,8 +24,7 @@ public class ArrayStack<E> implements Stack<E> {
 			return;
 		}
 		top++;
-		data[top] = element;
-		
+		data[top] = element;	
 	}
 	
 	public void display(){
